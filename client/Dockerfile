@@ -1,19 +1,15 @@
-# Step 1: Build the React (Vite) app
-FROM node:20.15.0-alpine AS build
+FROM node:20.15.0-alpine
 
 WORKDIR /app
+
+# Install dependencies and 'serve' globally
 COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps && npm install -g serve
+
+# Copy app source and build it
 COPY . .
 RUN npm run build
 
-# Step 2: Serve using Nginx
-FROM nginx:alpine
-
-# Copy build output to nginx's public folder
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Expose port 80
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Expose the port and serve the production build
+EXPOSE 3000
+CMD ["npm", "start"]
