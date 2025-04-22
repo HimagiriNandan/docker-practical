@@ -1,0 +1,91 @@
+.private-university-main-container {
+  height: 100%;
+  /* min-height: 90vh; */
+  padding: 20px;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.private-university-container {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 1200px;
+  height:100%;
+  /* max-height: 90vh; Use max-height instead of fixed height */
+  overflow-y: auto; /* Allow scrolling without forcing a fixed height */
+  scrollbar-width: none;
+}
+
+.private-university-header h1 {
+  color: #05B97D;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.private-university-content {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+/* Ensure the table scales properly on mobile */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 10px;
+  min-width: 600px; /* Ensures table doesn’t shrink too much */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+th {
+  background-color: #05B97D;
+  color: white;
+  text-align: center;
+}
+
+/* Zebra striping for readability */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: 0.3s;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .private-university-container {
+    width: 95%;
+    padding: 15px;
+    max-height: 100%; /* Ensure it doesn’t get forced into a scrollable box */
+  }
+
+  .private-university-content {
+    overflow-x: auto; /* Allow horizontal scroll */
+  }
+
+  table {
+    min-width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

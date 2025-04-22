@@ -1,0 +1,191 @@
+/* General gallery layout */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 30px;
+  padding-top: 80px;
+  box-sizing: border-box;
+  
+}
+
+.book-section {
+  width: 98%;
+  padding-top: 50px;
+
+}
+
+.book-section h2{
+  color: #05B97D;
+  padding-bottom: 30px;
+}
+
+
+
+/* Scrollable book section */
+.scroll-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+/* Scroll buttons */
+.arrow {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease-in-out;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Horizontal scrolling area */
+.book-list {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px;
+  white-space: nowrap;
+  /* max-width: 100%; */
+  width: 100%;
+}
+
+/* Hide scrollbar */
+.book-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card styling */
+.book-card {
+  flex: 0 0 250px; /* Ensures uniform card size */
+  height: 300px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: all .3s;
+}
+.book-card:hover {
+  transform: scale(1.05); /* Increase the size slightly */
+  transition: all .3s;
+  background-color: #F4F4F4;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);/* Green border shadow */
+}
+
+.book-card p{
+  color: #05B97D;
+  font-size: 13px;
+  font-weight: 500  ;
+}
+
+/* Book image */
+.book-card img {
+  width: 85%;
+  height: 70%;
+  /* object-fit: cover; */
+  border-radius: 5px;
+}
+
+/* Download button */
+.download-btn {
+  background-color: #05B97D;
+  font-weight: 500;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 5px;
+  border-radius: 5px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.download-btn:hover {
+  background-color: rgba(5, 118, 75);
+}
+
+
+@media screen and (max-width: 1024px) { /* Tablets */
+  .book-card {
+    flex: 0 0 200px; /* Slightly smaller card */
+    height: 260px;
+  }
+
+  .book-card img {
+    width: 90%;
+    height: 65%;
+  }
+
+  .book-card p {
+    font-size: 12px;
+  }
+
+  .download-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .arrow {
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 768px) { /* Mobile devices */
+  .book-list {
+    gap: 10px;
+  }
+
+  .book-card {
+    flex: 0 0 160px; /* Smaller card for mobiles */
+    height: 220px;
+  }
+
+  .book-card img {
+    width: 95%;
+    height: 60%;
+  }
+
+  .book-card p {
+    font-size: 11px;
+  }
+
+  .download-btn {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .arrow {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .gallery {
+    padding: 20px;
+    padding-top: 60px;
+  }
+
+  .book-section {
+    padding-top: 30px;
+  }
+
+  .book-section h2 {
+    font-size: 18px;
+    padding-bottom: 20px;
+  }
+}

@@ -1,0 +1,51 @@
+
+.start-modal-button-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+#startModal{
+  width: 28%;
+}
+.start-modal-btns{
+  padding: 5px;
+  border-radius: 6px;
+  width: fit-content;
+  border: none;
+}
+#cancel-btn{
+  background-color: #FF4A4A;
+  color: white;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+#start-btn{
+  background-color: #05B97D;
+  color: white;
+  cursor: pointer;
+}
+.confirmation-text{
+  font-size: 24px;
+  font-weight: 500;
+  color: #05B97D;
+  text-align: center;
+}
+#Modal-background{
+  height: 100vh;
+  width: 100vw;
+}
+
+.instruction-container-sm{
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .confirmation-text{
+    font-size: 18px;
+  }
+  #startModal{
+    width: 80%;
+  }
+}

@@ -1,0 +1,56 @@
+.InstructionPage{
+  height: 100vh;
+  padding: 6% 5% 0 5%;
+}
+
+.InstructionHeading{
+  color: #05B97D;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40px;
+}
+.InstructionContent{
+  background-color: #ffffff;
+  padding: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  overflow-y: scroll;
+  height: 75%;
+  border-radius: 10px;
+}
+.cancelBtn{
+  background-color: #FF4A4A;
+  padding: 5px;
+  width: 80px;
+  border: none;
+  color: #ffffff;
+  margin-top: 15px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.InstructionBtns{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.startBtn{
+  color: #ffffff;
+  background-color: #05B97D;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  width: 80px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.textFormatting{
+  font-weight: 600;
+}
+@media (max-width: 778px){
+  .InstructionHeading{
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+}

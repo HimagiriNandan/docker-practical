@@ -1,0 +1,16 @@
+
+.mocktest-cont{
+    padding:20px;
+    padding-left:270px;
+
+}
+
+.mocktestmaincontainer{
+    padding:0px;
+}
+
+#showtests-admin{
+    justify-content: center;
+    /* padding-left: 0px; */
+    /* margin-left: 0px; */
+}

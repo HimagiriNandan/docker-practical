@@ -1,0 +1,194 @@
+.tag{
+    font-size:15px;
+    color:rgb(0, 0, 0);
+    background-color: #83f3ff;
+    border-radius: 8px;
+    padding: 5px 7px;
+
+}
+
+.mocktestmaincontainer{
+    padding: 8% 6% 0 6%;
+  }
+  .mocktestHeading{
+    color: #05B97D;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .showtests{
+    display: flex;
+    width:100%;
+    height:100%;
+    padding-top:50px;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-bottom: 5%;
+  }
+  
+  .tag{
+    text-wrap:none;
+  }
+  
+  .startbtn{
+    display: flex;
+    gap:10px;
+    background-color: #059BB9;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #ffffff;
+    justify-content: center;
+    width: fit-content;
+    padding: 5px;
+  }
+  .testContainer{
+
+    display:flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 35%;
+    gap:15px;
+    transition: all 0.3s;
+  
+  }
+  
+  .testContainer:hover{
+    transform: scale(1.02);
+    transition: all 0.3s;
+  }
+  .testName{
+    color:rgb(57, 57, 57);
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .noofques{
+    color:rgb(45, 45, 45);
+    font-size: 15px;
+    margin-top: 8px;
+  }
+  .testsContainer{
+    width:100%;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 12% 0 14%;
+  }
+  .badges{
+    display: flex;
+    gap: 10px;
+    background-color: #05B97D;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #ffffff;
+    justify-content: center;
+    width: fit-content;
+    padding: 5px;
+  }
+  
+  .test-tag-cont{
+    display:flex;
+    gap:20px;
+  
+  }
+  #test-tag2:hover{
+    background-color: #056376;
+  }
+  
+  #test-tag2{
+    font-size: 15px;
+    background-color: #059BB9;
+    border-radius: 8px;
+    padding: 5px 7px;
+  }
+  
+  .mocktestheader{
+    background-color: #05B97D;
+    color: white;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+  .mocktestheader h1{
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .mocktestresumeHeading{
+    color: #05B97D;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  #attemptedMocktest-header{
+    background-color:#059BB9;
+    margin-bottom: 20px;
+  }
+  .attemptedmocktesttext{
+    color: #059BB9;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+   .test-tag-cont{
+    gap:10px;
+   }
+    .mocktestmaincontainer{
+      padding-top: 20%;
+    }
+  #test-tag{
+    font-size: 13px;
+    color: white;
+    background-color: #05B97D;
+    border-radius: 8px;
+    padding: 5px 7px;
+  }
+    .mocktestheader {
+      font-size: 24px;
+    }
+  
+    .testsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  
+    .showtests {
+      gap: 20px;
+    }
+  
+    .testContainer {
+      width: 100%; 
+      padding: 15px;
+    }
+  
+    .testName {
+      font-size: 16px;
+    }
+  
+    .badges {
+      font-size: 12px; 
+      width: 60px;
+    }
+  
+    .noofques {
+      font-size: 13px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .mocktestHeading {
+      font-size: 26px;
+    }
+  
+    .testContainer {
+      width: 100%;
+    }
+  }
