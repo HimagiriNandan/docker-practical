@@ -18,8 +18,8 @@ pipeline {
         stage('Build Client') {
             steps {
                 dir('client') {
-                    bat 'npm install'
-                    bat 'npm run build'
+                    sh 'npm install'
+                    sh 'npm run build'
                 }
             }
         }
@@ -27,34 +27,34 @@ pipeline {
         stage('Build Server') {
             steps {
                 dir('server') {
-                    bat 'npm install'
+                    sh 'npm install'
                 }
             }
         }
 
         stage('Build Docker Images') {
             steps {
-                bat "docker build -t %CLIENT_IMAGE_NAME%:%IMAGE_TAG% ./client"
-                bat "docker build -t %SERVER_IMAGE_NAME%:%IMAGE_TAG% ./server"
-                bat "docker tag %CLIENT_IMAGE_NAME%:%IMAGE_TAG% %CLIENT_IMAGE_NAME%:latest"
-                bat "docker tag %SERVER_IMAGE_NAME%:%IMAGE_TAG% %SERVER_IMAGE_NAME%:latest"
+                sh "docker build -t ${CLIENT_IMAGE_NAME}:${IMAGE_TAG} ./client"
+                sh "docker build -t ${SERVER_IMAGE_NAME}:${IMAGE_TAG} ./server"
+                sh "docker tag ${CLIENT_IMAGE_NAME}:${IMAGE_TAG} ${CLIENT_IMAGE_NAME}:latest"
+                sh "docker tag ${SERVER_IMAGE_NAME}:${IMAGE_TAG} ${SERVER_IMAGE_NAME}:latest"
             }
         }
 
         stage('Login to Docker Hub') {
             steps {
-                bat '''
-                echo|set /p=%DOCKERHUB_CREDENTIALS_PSW%|docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
-                '''
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+                }
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
-                bat "docker push %CLIENT_IMAGE_NAME%:%IMAGE_TAG%"
-                bat "docker push %SERVER_IMAGE_NAME%:%IMAGE_TAG%"
-                bat "docker push %CLIENT_IMAGE_NAME%:latest"
-                bat "docker push %SERVER_IMAGE_NAME%:latest"
+                sh "docker push ${CLIENT_IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker push ${SERVER_IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker push ${CLIENT_IMAGE_NAME}:latest"
+                sh "docker push ${SERVER_IMAGE_NAME}:latest"
             }
         }
 
@@ -67,9 +67,9 @@ pipeline {
 
     post {
         always {
-            bat 'docker logout'
-            bat "docker rmi %CLIENT_IMAGE_NAME%:%IMAGE_TAG% || exit 0"
-            bat "docker rmi %SERVER_IMAGE_NAME%:%IMAGE_TAG% || exit 0"
+            sh 'docker logout'
+            sh "docker rmi ${CLIENT_IMAGE_NAME}:${IMAGE_TAG} || true"
+            sh "docker rmi ${SERVER_IMAGE_NAME}:${IMAGE_TAG} || true"
         }
     }
 }
