@@ -6,6 +6,7 @@ pipeline {
         CLIENT_IMAGE_NAME = "himagirinandan/my-frontend"
         SERVER_IMAGE_NAME = "himagirinandan/my-backend"
         IMAGE_TAG = "${env.BUILD_NUMBER}"
+        
     }
 
     stages {
