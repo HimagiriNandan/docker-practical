@@ -1,0 +1,98 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')  // Jenkins credentials for Docker Hub
+        CLIENT_IMAGE_NAME = "himagirinandan/my-frontend"
+        SERVER_IMAGE_NAME = "himagirinandan/my-backend"
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Client') {
+            steps {
+                dir('client') {
+                    script {
+                        // Install dependencies and build the React app
+                        sh 'npm install'
+                        sh 'npm run build'
+                    }
+                }
+            }
+        }
+
+        stage('Build Server') {
+            steps {
+                dir('server') {
+                    script {
+                        // Install dependencies and build the server (assuming it's a Node.js app)
+                        sh 'npm install'
+                    }
+                }
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                script {
+                    // Build Docker images for both the client and server
+                    sh "docker build -t ${CLIENT_IMAGE_NAME}:${IMAGE_TAG} ./client"
+                    sh "docker build -t ${SERVER_IMAGE_NAME}:${IMAGE_TAG} ./server"
+
+                    // Tag the images as latest
+                    sh "docker tag ${CLIENT_IMAGE_NAME}:${IMAGE_TAG} ${CLIENT_IMAGE_NAME}:latest"
+                    sh "docker tag ${SERVER_IMAGE_NAME}:${IMAGE_TAG} ${SERVER_IMAGE_NAME}:latest"
+                }
+            }
+        }
+
+        stage('Login to Docker Hub') {
+            steps {
+                script {
+                    // Login to Docker Hub using Jenkins credentials
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+                    }
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    // Push the client and server images to Docker Hub
+                    sh "docker push ${CLIENT_IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker push ${SERVER_IMAGE_NAME}:${IMAGE_TAG}"
+
+                    // Push latest tag images to Docker Hub
+                    sh "docker push ${CLIENT_IMAGE_NAME}:latest"
+                    sh "docker push ${SERVER_IMAGE_NAME}:latest"
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deployment step placeholder - customize based on your target platform'
+                // Add your deployment commands here, e.g., SSH or Kubernetes commands
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                // Clean up after the build is done
+                sh "docker logout"
+                sh "docker rmi ${CLIENT_IMAGE_NAME}:${IMAGE_TAG} || exit 0"
+                sh "docker rmi ${SERVER_IMAGE_NAME}:${IMAGE_TAG} || exit 0"
+            }
+        }
+    }
+}
