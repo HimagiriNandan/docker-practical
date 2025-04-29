@@ -65,7 +65,7 @@ export default function SignIn() {
             {isLoading && <Loading />}
             <div className="sign-in-content">
 
-                <h1>Welcome!</h1>
+                <h1>Hello!</h1>
 
                 <div className="div-para">
                     <p className="subheading">Login to your account</p>
