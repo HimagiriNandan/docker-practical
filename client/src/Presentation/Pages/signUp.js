@@ -73,7 +73,7 @@ export default function SignUp() {
 
                     <h1>Welcome!</h1>
 
-                    <p className="sign-up-subheading">create a free account</p>
+                    <p className="sign-up-subheading">Hello Mawa signup avvu</p>
 
                     <form onSubmit={handleSubmit} className="sign-up-form">
 
