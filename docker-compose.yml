@@ -2,14 +2,14 @@ version: "3.8"
 
 services:
   client:
-    build: ./client
+    image: himagirinandan/docker-practical-client:latest
     ports:
-      - "3000:3000" 
+      - "3000:3000"
     depends_on:
       - server
 
   server:
-    build: ./server
+    image: himagirinandan/docker-practical-server:latest
     ports:
       - "8000:8000"
     environment:
