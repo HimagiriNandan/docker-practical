@@ -68,7 +68,7 @@ export default function SignIn() {
                 <h1>Welcome!</h1>
 
                 <div className="div-para">
-                    <p className="subheading">Login to your account</p>
+                    <p className="subheading">SignIn to your account</p>
                 </div>
 
 
